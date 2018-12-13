@@ -13,27 +13,11 @@ public class Recognition02_main {
 
 	public static void main(String[] args) 
 	{
-		VisualRecognition service = new VisualRecognition("2018-03-19");
-		IamOptions iamOptions = new IamOptions.Builder()
-		  .apiKey("APIKEY")
-		  .build();
-		service.setIamCredentials(iamOptions);
+		
 
-		ClassifyOptions classifyOptions = null;
-		try {
-			classifyOptions = new ClassifyOptions.Builder()
-					  .imagesFile(new File("img/Apple.jpg"))
-					  .imagesFilename("Apple.jpg")
-					  .threshold((float) 0.6)
-					  .owners(Arrays.asList("IBM"))
-					  .build();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		ClassifiedImages result = service.classify(classifyOptions).execute();
-	    System.out.println(result);
+		Recognition02_lib rlib = new Recognition02_lib();
+		rlib.getResult("img/apple.jpg");
+		
 
 
 	}
